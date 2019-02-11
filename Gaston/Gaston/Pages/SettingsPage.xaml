@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gaston.SettingsPage">
+    <ContentPage.Content>
+        <StackLayout  VerticalOptions="CenterAndExpand">
+            <!-- Place new controls here -->
+            <Grid Margin="25">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <StackLayout>
+                    <Label>
+                        Sound Effects
+                    </Label>
+                    <Slider  Maximum="100"/>
+                    <Label>
+                        Music Volume
+                    </Label>
+                    <Slider  Maximum="100"/>
+                    <Button 
+                        Text="Back"
+                        Grid.Row="1"
+                        Grid.Column="0"
+                        CornerRadius="20"
+                        BorderColor="Black"
+                        BorderWidth="2"
+                        x:Name="Back"
+                        Clicked="Back_Clicked"
+                        >
+                    </Button>
+                </StackLayout>
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
