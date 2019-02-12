@@ -4,7 +4,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Gaston.Models
 {
-    public class MultipleChoiceLevel : Level
+    public class MultipleChoiceExample : Example
     {
         public Verb MultipleChoiceVerb;
         public string Sentence;
@@ -22,7 +22,7 @@ namespace Gaston.Models
                     "es", false
                 },
             });
-        public MultipleChoiceLevel(Verb multipleChoiceVerb, string sentence)
+        public MultipleChoiceExample(Verb multipleChoiceVerb, string sentence)
         {
             MultipleChoiceVerb = multipleChoiceVerb;
             Sentence = sentence;
