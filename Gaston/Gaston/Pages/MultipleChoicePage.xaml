@@ -7,22 +7,15 @@
                     <RowDefinition></RowDefinition> 
                     <RowDefinition></RowDefinition> 
                 </Grid.RowDefinitions>
-                <Label FontSize="Large">This is a sentence with a missi_ Word.</Label>
-                <Grid Grid.Row="1">
+                <Label FontSize="Large" Text="{Binding Sentence,Mode=TwoWay}" VerticalOptions="CenterAndExpand"></Label>
+                <Grid Grid.Row="1" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" x:Name="ButtonGrid">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition>
-                            
-                        </ColumnDefinition>
-                        <ColumnDefinition>
-                            
-                        </ColumnDefinition>
-                        <ColumnDefinition>
-                            
-                        </ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                    <StackLayout x:Name="StackLayout" Orientation="Horizontal">
-                        
-                    </StackLayout>
                 </Grid>
             </Grid>
         </StackLayout>

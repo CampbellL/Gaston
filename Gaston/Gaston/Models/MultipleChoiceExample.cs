@@ -1,14 +1,29 @@
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Security.Cryptography.X509Certificates;
+using Gaston.Annotations;
 
 namespace Gaston.Models
 {
     public class MultipleChoiceExample : Example
     {
         public Verb MultipleChoiceVerb;
-        public string Sentence;
-        
+
+        private string _sentence;
+        public string Sentence
+        {
+            set
+            {
+                if (_sentence != value) {
+                    _sentence = value;
+                    OnPropertyChanged ("Sentence");
+                }
+            }
+            get { return _sentence; }
+        }
+
         public Verb Verb =
             new Verb("aim", new Dictionary<string, bool>()
             {
@@ -27,5 +42,7 @@ namespace Gaston.Models
             MultipleChoiceVerb = multipleChoiceVerb;
             Sentence = sentence;
         }
+
+
     }
 }
