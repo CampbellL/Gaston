@@ -1,21 +1,27 @@
-<?xml version="1.0" encoding="utf-8"?>
-
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Gaston.Pages.MultipleChoicePage">
+<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="Gaston.Pages.MultipleChoicePage">
     <ContentPage.Content>
-        <StackLayout VerticalOptions="Center" Margin="50">
+        <StackLayout Margin="50">
             <Grid>
                 <Grid.RowDefinitions>
-                    <RowDefinition></RowDefinition>
-                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition> 
+                    <RowDefinition></RowDefinition> 
                 </Grid.RowDefinitions>
-                <Label Grid.Row="0" Text="This is a sentence with a missing word"></Label>
+                <Label FontSize="Large">This is a sentence with a missi_ Word.</Label>
                 <Grid Grid.Row="1">
-                    <StackLayout Orientation="Horizontal">
-                        <Button Text="test"></Button>
-                        <Button Text="test"></Button>
-                        <Button Text="test"></Button>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition>
+                            
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                            
+                        </ColumnDefinition>
+                        <ColumnDefinition>
+                            
+                        </ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <StackLayout x:Name="StackLayout" Orientation="Horizontal">
+                        
                     </StackLayout>
                 </Grid>
             </Grid>

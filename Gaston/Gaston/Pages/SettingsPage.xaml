@@ -17,11 +17,11 @@
                     <Label>
                         Sound Effects
                     </Label>
-                    <Slider  Maximum="100"/>
+                    <Slider  Maximum="100" x:Name="SfxVolumeSlider" ValueChanged="SfxVolumeSlider_OnValueChanged"/>
                     <Label>
                         Music Volume
                     </Label>
-                    <Slider  Maximum="100"/>
+                    <Slider  Maximum="100" x:Name="MusicVolumeSlider" ValueChanged="MusicVolumeSlider_OnValueChanged"/>
                     <Button 
                         Text="Back"
                         Grid.Row="1"

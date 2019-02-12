@@ -26,12 +26,9 @@
 
   <ItemGroup>
     <Compile Remove="Pages\MultipleChoice.xaml.cs" />
+    <Compile Update="Pages\MultipleChoicePage.xaml.cs">
+      <DependentUpon>MultipleChoicePage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
-  <ItemGroup>
-    <Page Include="Pages\MultipleChoicePage.xaml">
-      <SubType>Designer</SubType>
-      <Generator></Generator>
-    </Page>
-  </ItemGroup>
 </Project>

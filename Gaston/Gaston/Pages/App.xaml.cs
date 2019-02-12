@@ -10,9 +10,13 @@ namespace Gaston
     {
         public App()
         {
-            InitializeComponent();
-
+            InitializeComponent();            
             MainPage = new MainPage();
+            if (!Current.Properties.ContainsKey("SfxVolume") || !Current.Properties.ContainsKey("MusicVolume"))
+            {
+                Current.Properties["SfxVolume"] = 100;
+                Current.Properties["MusicVolume"] = 100;
+            }
         }
 
         protected override void OnStart()
