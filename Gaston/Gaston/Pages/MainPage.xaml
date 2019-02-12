@@ -1,8 +1,8 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Gaston"
-             x:Class="Gaston.MainPage">
+             x:Class="Gaston.Pages.MainPage">
 
     <StackLayout  VerticalOptions="CenterAndExpand">
         <!-- Place new controls here -->
@@ -21,6 +21,8 @@
                 CornerRadius="20"
                 BorderColor="Black"
                 BorderWidth="2"
+                TextColor="Purple"
+                BackgroundColor="Fuchsia"
                 x:Name="Play"
                 Clicked="Play_Clicked"
             >

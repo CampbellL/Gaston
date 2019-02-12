@@ -23,4 +23,15 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\MultipleChoice.xaml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Pages\MultipleChoicePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </Page>
+  </ItemGroup>
 </Project>
