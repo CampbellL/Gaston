@@ -37,7 +37,9 @@ namespace Gaston.Pages
 
         private void Settings_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new SettingsPage());
+            NavigationPage page = new NavigationPage(new SettingsPage());
+            NavigationPage.SetHasBackButton(page,true);
+            Navigation.PushModalAsync(page);
         }
     }
 }
