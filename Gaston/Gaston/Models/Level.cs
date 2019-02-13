@@ -6,10 +6,5 @@ namespace Gaston.Models
     public class Level
     {
         public List<Example> Examples;
-
-        public Level(List<Example> examples)
-        {
-            Examples = examples;
-        }
     }
 }

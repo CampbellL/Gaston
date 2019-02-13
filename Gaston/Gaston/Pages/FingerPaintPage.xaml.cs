@@ -44,26 +44,35 @@ namespace Gaston.Pages
                     int checkY = (int)_boxes[i + j * 4].Y;
                     SKPoint center = new SKPoint(checkX + _boxSize/2, checkY + _boxSize/2);
 
-                    if (test.X < checkX + _boxSize * 7/8 && 
-                        test.X > checkX + _boxSize * 1/8 && 
-                        test.Y < checkY + _boxSize * 7/8 && 
-                        test.Y > checkY + _boxSize * 1/8 && 
-                        !_path.Contains(center.X, center.Y))
+                    if (_path.IsEmpty ||
+                        test.X < _crossedBoxes[_crossedBoxes.Count - 1].X + 15.0 / 8 * _boxSize &&
+                        test.X > _crossedBoxes[_crossedBoxes.Count - 1].X - 9.0 / 8 * _boxSize &&
+                        test.Y < _crossedBoxes[_crossedBoxes.Count - 1].Y + 15.0 / 8 * _boxSize &&
+                        test.Y > _crossedBoxes[_crossedBoxes.Count - 1].Y - 9.0 / 8 * _boxSize)
                     {
-                        if (_path.IsEmpty)
+
+                        if (test.X < checkX + _boxSize * 7.0 / 8 &&
+                        test.X > checkX + _boxSize * 1.0 / 8 &&
+                        test.Y < checkY + _boxSize * 7.0 / 8 &&
+                        test.Y > checkY + _boxSize * 1.0 / 8 &&
+                        !_path.Contains(center.X, center.Y))
                         {
-                            _path.Reset();
-                            _path.MoveTo(center);
-                            CanvasView.InvalidateSurface();
+                            if (_path.IsEmpty)
+                            {
+                                _path.Reset();
+                                _path.MoveTo(center);
+                                CanvasView.InvalidateSurface();
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("CenterX: " + center.X);
+                                Console.WriteLine("CenterY: " + center.Y);
+                                _path.LineTo(center);
+                                CanvasView.InvalidateSurface();
+                            }
+                            _crossedBoxes.Add(center);
                         }
-                        if (!_path.IsEmpty)
-                        {
-                            Console.WriteLine("CenterX: " + center.X);
-                            Console.WriteLine("CenterY: " + center.Y);
-                            _path.LineTo(center);
-                            CanvasView.InvalidateSurface();
-                        }
-                        _crossedBoxes.Add(center);
                     }
                 }
             }
@@ -75,6 +84,7 @@ namespace Gaston.Pages
 
                 case TouchActionType.Moved:
                     _path.Reset();
+
                     if (_crossedBoxes.Count != 0)
                     {
                         _path.MoveTo(_crossedBoxes[0]);

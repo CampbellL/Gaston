@@ -4916,11 +4916,7 @@ namespace Gaston.Droid
 			public const int ic_vol_type_tv_dark = 2130837771;
 			
 			// aapt resource value: 0x7f02010c
-<<<<<<< HEAD
-			public const int mm = 2130837772;
-=======
 			public const int ic_vol_type_tv_light = 2130837772;
->>>>>>> 21ba4a4c4e5e84a65866fbeff9251ca606baaa5d
 			
 			// aapt resource value: 0x7f02010d
 			public const int mr_button_connected_dark = 2130837773;
