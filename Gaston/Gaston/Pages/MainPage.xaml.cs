@@ -30,9 +30,7 @@ namespace Gaston.Pages
                     },
                 }
                 );
-            Navigation.PushModalAsync(new MultipleChoicePage(new MultipleChoiceExample(
-                verb,"Je _"
-                )));
+            Navigation.PushModalAsync(new FingerPaintPage());
         }
 
         private void Settings_Clicked(object sender, EventArgs e)
