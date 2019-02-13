@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Gaston.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -15,6 +15,7 @@ namespace Gaston
         public SettingsPage()
         {
             InitializeComponent();
+            Navigation.PushModalAsync(new FingerPaintPage());
             MusicVolumeSlider.Value = Application.Current.Properties ["MusicVolume"] is double ? (double) (double) Application.Current.Properties ["MusicVolume"] : 0;
             SfxVolumeSlider.Value = Application.Current.Properties ["SfxVolume"] is double ? (double) (double) Application.Current.Properties ["SfxVolume"] : 0;
         }

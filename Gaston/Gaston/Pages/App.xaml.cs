@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Linq;
+using System.Reflection;
 using Gaston.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+
 
 [assembly: XamlCompilation(XamlCompilationOptions.Compile)]
 namespace Gaston
@@ -10,7 +13,7 @@ namespace Gaston
     {
         public App()
         {
-            InitializeComponent();            
+            InitializeComponent();
             MainPage = new MainPage();
             if (!Current.Properties.ContainsKey("SfxVolume") || !Current.Properties.ContainsKey("MusicVolume"))
             {
