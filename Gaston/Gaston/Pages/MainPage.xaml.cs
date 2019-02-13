@@ -30,14 +30,14 @@ namespace Gaston.Pages
                     },
                 }
                 );
-            Navigation.PushModalAsync(new MultipleChoicePage(new MultipleChoiceExample(
-                verb,"Je _"
-                )));
+            Navigation.PushModalAsync(new FingerPaintPage());
         }
 
         private void Settings_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new SettingsPage());
+            NavigationPage page = new NavigationPage(new SettingsPage());
+            NavigationPage.SetHasBackButton(page,true);
+            Navigation.PushModalAsync(page);
         }
     }
 }

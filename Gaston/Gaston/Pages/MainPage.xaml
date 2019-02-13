@@ -32,7 +32,11 @@
                     BorderWidth="2"
                     TextColor="Black"
                     BackgroundColor="#CCFFFFFF"
+<<<<<<< HEAD
 
+=======
+                    
+>>>>>>> 21ba4a4c4e5e84a65866fbeff9251ca606baaa5d
                     x:Name="Play"
                     Clicked="Play_Clicked" />
                 <Button

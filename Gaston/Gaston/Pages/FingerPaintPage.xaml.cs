@@ -9,8 +9,12 @@ namespace Gaston.Pages
 {
     public partial class FingerPaintPage : ContentPage
     {
-        private readonly Dictionary<long, SKPath> _inProgressPaths = new Dictionary<long, SKPath>();
-        private readonly List<SKPath> _completedPaths = new List<SKPath>();
+
+
+        private SKPath _path = new SKPath();
+        private List<SKPoint> _boxes = new List<SKPoint>();
+        private List<SKPoint> _crossedBoxes = new List<SKPoint>();
+        private int _boxSize = 0;
 
         private readonly SKPaint _paint = new SKPaint
         {
@@ -28,78 +32,120 @@ namespace Gaston.Pages
 
         public void OnTouchEffectAction(object sender, TouchActionEventArgs args)
         {
-            Console.WriteLine("x: " + args.Location.X);
-            Console.WriteLine("y: " + args.Location.Y);
+            //Console.WriteLine("x: " + args.Location.X);
+            //Console.WriteLine("y: " + args.Location.Y);
             var test = ConvertToPixel(args.Location);
-            if (test.X < 350 && test.X > 299 && test.Y < 350 && test.Y > 299)
+
+            for (int i = 0; i < 4 ; i++)
             {
-                DisplayAlert("Hit", "Hit", "ok");
+                for (int j = 0; j < 4; j++)
+                {
+                    int checkX = (int) _boxes[i + j * 4].X;
+                    int checkY = (int)_boxes[i + j * 4].Y;
+                    SKPoint center = new SKPoint(checkX + _boxSize/2, checkY + _boxSize/2);
+
+                    if (test.X < checkX + _boxSize * 7/8 && 
+                        test.X > checkX + _boxSize * 1/8 && 
+                        test.Y < checkY + _boxSize * 7/8 && 
+                        test.Y > checkY + _boxSize * 1/8 && 
+                        !_path.Contains(center.X, center.Y))
+                    {
+                        if (_path.IsEmpty)
+                        {
+                            _path.Reset();
+                            _path.MoveTo(center);
+                            CanvasView.InvalidateSurface();
+                        }
+                        if (!_path.IsEmpty)
+                        {
+                            Console.WriteLine("CenterX: " + center.X);
+                            Console.WriteLine("CenterY: " + center.Y);
+                            _path.LineTo(center);
+                            CanvasView.InvalidateSurface();
+                        }
+                        _crossedBoxes.Add(center);
+                    }
+                }
             }
 
             switch (args.Type)
             {
                 case TouchActionType.Pressed:
-                    if (!_inProgressPaths.ContainsKey(args.Id))
-                    {
-                        SKPath path = new SKPath();
-                        path.MoveTo(ConvertToPixel(args.Location));
-                        _inProgressPaths.Add(args.Id, path);
-                        CanvasView.InvalidateSurface();
-                    }
-
                     break;
 
                 case TouchActionType.Moved:
-                    if (_inProgressPaths.ContainsKey(args.Id))
+                    _path.Reset();
+                    if (_crossedBoxes.Count != 0)
                     {
-                        SKPath path = _inProgressPaths[args.Id];
-                        path.LineTo(ConvertToPixel(args.Location));
+                        _path.MoveTo(_crossedBoxes[0]);
+
+                        foreach (SKPoint point in _crossedBoxes)
+                        {
+                            _path.LineTo(point);
+                        }
+                        _path.LineTo(ConvertToPixel(args.Location));
                         CanvasView.InvalidateSurface();
                     }
-
                     break;
 
                 case TouchActionType.Released:
-                    if (_inProgressPaths.ContainsKey(args.Id))
+                    if (!_path.IsEmpty)
                     {
-                        _completedPaths.Add(_inProgressPaths[args.Id]);
-                        _inProgressPaths.Remove(args.Id);
+                        _path.Reset();
+                        _crossedBoxes.Clear();
                         CanvasView.InvalidateSurface();
                     }
 
                     break;
 
                 case TouchActionType.Cancelled:
-                    if (_inProgressPaths.ContainsKey(args.Id))
+                    if (!_path.IsEmpty)
                     {
-                        _inProgressPaths.Remove(args.Id);
                         CanvasView.InvalidateSurface();
                     }
 
                     break;
             }
+
+            SKPoint ConvertToPixel(Point pt)
+            {
+                return new SKPoint((float)(CanvasView.CanvasSize.Width * pt.X / CanvasView.Width),
+                    (float)(CanvasView.CanvasSize.Height * pt.Y / CanvasView.Height));
+            }
+
+        
         }
+
 
         public void OnCanvasViewPaintSurface(object sender, SKPaintSurfaceEventArgs args)
         {
+            SKImageInfo info = args.Info;
             SKCanvas canvas = args.Surface.Canvas;
+            int screenWidth = info.Width;
+            int screenHeight = info.Height;
+            _boxSize = 20*screenWidth/100;
+
             canvas.Clear();
-            canvas.DrawRect(300, 300, 50, 50, _paint);
-            foreach (SKPath path in _completedPaths)
+
+            int startX = 10 * (screenWidth / 100);
+            int startY = 50 * (screenHeight / 100);
+
+            for (int i = 0; i < 4; i++)
             {
-                canvas.DrawPath(path, _paint);
+                for (int j = 0; j < 4; j++)
+                {
+                        createBox(startX + i * _boxSize, startY + j * _boxSize, canvas);
+                }
             }
 
-            foreach (SKPath path in _inProgressPaths.Values)
-            {
-                canvas.DrawPath(path, _paint);
-            }
-        }
+            canvas.DrawPath(_path, _paint);
 
-        SKPoint ConvertToPixel(Point pt)
-        {
-            return new SKPoint((float) (CanvasView.CanvasSize.Width * pt.X / CanvasView.Width),
-                (float) (CanvasView.CanvasSize.Height * pt.Y / CanvasView.Height));
+            void createBox(int x, int y, SKCanvas c)
+            {
+                 canvas.DrawRect(x, y, _boxSize, _boxSize, _paint);
+                 SKPoint topLeft = new SKPoint(x, y);
+                 _boxes.Add(topLeft);
+            }
         }
     }
 }

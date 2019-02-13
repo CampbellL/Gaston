@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<d:GamePage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="clr-namespace:Gaston.Models;assembly=Gaston"
+             x:Class="Gaston.Pages.FillBlankPage">
+    
+    <d:GamePage.Content>
+        <StackLayout Margin="50" x:Name="parentStack">
+            <Label Text="{Binding Sentence, Mode=TwoWay}" FontSize="Large" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"></Label>
+            <Grid VerticalOptions="CenterAndExpand" HorizontalOptions="Center" x:Name="ButtonGrid">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+            </Grid>
+            <Grid>
+                <Button x:Name="Commit" Clicked="Button_Clicked" Text="Commit">
+
+                </Button>
+            </Grid>
+        </StackLayout>
+    </d:GamePage.Content>
+</d:GamePage>
