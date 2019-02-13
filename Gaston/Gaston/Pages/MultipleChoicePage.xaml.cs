@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Gaston.Models;
+using Gaston.Models.States;
 using Xamarin.Forms;
 
 namespace Gaston.Pages
 {
-    public partial class MultipleChoicePage : ContentPage
+    public partial class MultipleChoicePage : GamePage
     {
 
         private List<Button> _buttons = new List<Button>();
@@ -15,6 +16,7 @@ namespace Gaston.Pages
 
         public MultipleChoicePage(MultipleChoiceExample example)
         {
+            ExampleState = new ExampleState();
             
             InitializeComponent();
             

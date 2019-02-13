@@ -4,14 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Gaston.Models.States;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace Gaston.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FillBlankPage : ContentPage
+	public partial class FillBlankPage : GamePage
 	{
         private readonly FillBlankExample _example;
         private Stack<Letter> letterStack = new Stack<Letter>();
@@ -21,6 +21,7 @@ namespace Gaston.Pages
 
         public FillBlankPage (FillBlankExample example)
 		{
+            ExampleState = new ExampleState();
 			InitializeComponent ();            
             _example = example;
             BindingContext = _example;
@@ -119,6 +120,14 @@ namespace Gaston.Pages
                     label.IsVisible = false;
                     return false;
                 });
+                
+                Navigation.PopModalAsync(true);
+                ExampleState.Score = score;      
+                ExampleState.Completed = true;
+
+                
+
+
             }
             else
             {
