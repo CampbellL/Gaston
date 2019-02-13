@@ -100,9 +100,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\drawable\bg.png">
+    <AndroidResource Include="Resources\drawable\bg.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </AndroidResource>
     <EmbeddedResource Include="Resources\Level_French_Colour.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

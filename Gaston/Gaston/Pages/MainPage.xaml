@@ -31,7 +31,7 @@
                     BorderColor="Black"
                     BorderWidth="2"
                     TextColor="Black"
-                    BackgroundColor="GhostWhite"
+                    BackgroundColor="#CCFFFFFF"
                     
                     x:Name="Play"
                     Clicked="Play_Clicked" />
