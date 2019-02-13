@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using Gaston.Models;
 using Xamarin.Forms;
 
@@ -7,12 +9,17 @@ namespace Gaston.Pages
 {
     public partial class MultipleChoicePage : ContentPage
     {
+
+        private List<Button> _buttons = new List<Button>();
         private readonly MultipleChoiceExample _example;
 
         public MultipleChoicePage(MultipleChoiceExample example)
         {
+            
             InitializeComponent();
+            
             _example = example;
+            var test = ButtonGrid.GetChildElements(new Point());
             BindingContext = _example;
 
             for (int i = 0; i < _example.Verb.Endings.Count; i++)
@@ -28,9 +35,29 @@ namespace Gaston.Pages
                 Grid.SetColumn(button, i);
                 button.Clicked += OnButtonClicked;
                 ButtonGrid.Children.Add(button);
+                _buttons.Add(button);
             }
         }
 
+        void DisableAllButtons()
+        {
+            foreach (var button in _buttons)
+            {
+                button.IsEnabled = false;
+            }
+        }
+        void ExampleLost()
+        {
+            this.DisableAllButtons();
+            this.BackgroundColor = Color.Red;
+        }
+        
+        void ExampleWon()
+        {
+            this.DisableAllButtons();
+            this.BackgroundColor = Color.Lime;
+        }
+        
         async void OnButtonClicked(object sender, EventArgs args)
         {
             Button button = (Button) sender;
@@ -44,11 +71,11 @@ namespace Gaston.Pages
 
             if (button.Text == test.Key)
             {
-                this.BackgroundColor = Color.GreenYellow;
+                this.ExampleWon();
             }
             else
             {
-                button.BackgroundColor = Color.Red;
+                this.ExampleLost();
             }
         }
     }

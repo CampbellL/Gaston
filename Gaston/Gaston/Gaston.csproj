@@ -11,6 +11,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="SkiaSharp.Views" Version="1.68.0" />
+    <PackageReference Include="SkiaSharp.Views.Forms" Version="1.68.0" />
     <PackageReference Include="Xamarin.Forms" Version="4.0.0.62955-pre2" />
   </ItemGroup>
 
@@ -30,4 +32,24 @@
     </Compile>
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="Level_French_Colour.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="bg.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Page Include="Pages\LevelLoader.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </Page>
+    <Page Include="Pages\map1.xaml">
+      <SubType>Designer</SubType>
+      <Generator></Generator>
+    </Page>
+  </ItemGroup>
 </Project>

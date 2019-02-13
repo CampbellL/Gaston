@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace Gaston.Models
                     OnPropertyChanged ("Sentence");
                 }
             }
-            get { return _sentence; }
+            get => _sentence;
         }
 
         public Verb Verb =
@@ -40,7 +41,10 @@ namespace Gaston.Models
         public MultipleChoiceExample(Verb multipleChoiceVerb, string sentence)
         {
             MultipleChoiceVerb = multipleChoiceVerb;
-            Sentence = sentence;
+            Sentence = sentence.Insert(
+                sentence.IndexOf("_", StringComparison.Ordinal),
+                multipleChoiceVerb.Root
+                );
         }
 
 
