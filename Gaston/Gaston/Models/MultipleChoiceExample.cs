@@ -11,7 +11,7 @@ namespace Gaston.Models
 {
     public class MultipleChoiceExample : Example
     {
-        public Verb MultipleChoiceVerb;
+        public readonly Verb MultipleChoiceVerb;
         private string _sentence;
         public string Sentence
         {
@@ -19,32 +19,15 @@ namespace Gaston.Models
             {
                 if (_sentence != value) {
                     _sentence = value;
-                    OnPropertyChanged ("Sentence");
+                    OnPropertyChanged ();
                 }
             }
             get => _sentence;
         }
-
-        public Verb Verb =
-            new Verb("aim", new Dictionary<string, bool>()
-            {
-                {
-                    "ons", true
-                },
-                {
-                    "e", false
-                },
-                {
-                    "es", false
-                },
-            });
         public MultipleChoiceExample(Verb multipleChoiceVerb, string sentence)
         {
+            Sentence = sentence;             
             MultipleChoiceVerb = multipleChoiceVerb;
-            Sentence = sentence.Insert(
-                sentence.IndexOf("_", StringComparison.Ordinal),
-                multipleChoiceVerb.Root
-                );
         }
 
 

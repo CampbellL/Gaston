@@ -1,0 +1,163 @@
+[
+  {
+    "Sentence": "Mickey _ Minnie beaucoup.",
+    "root": "aime",
+    "letters": [
+        "a",
+        "r",
+        "i",
+        "p",
+        "m",
+        "s",
+        "é",
+        "e",
+        "f",
+        "r"
+    ]
+  },
+  {
+    "Sentence": "Tim _ de la musique.",
+    "root": "écoute",
+    "letters": [
+      "a",
+      "r",
+      "i",
+      "é",
+      "m",
+      "t",
+      "c",
+      "e",
+      "u",
+      "o"
+    ]
+    
+  },
+  {
+    "Sentence": "Le héros _ son adversaire pour lui faire mal.",
+    "root": "attaque",
+    "letters": [
+      "u",
+      "a",
+      "i",
+      "q",
+      "t",
+      "e",
+      "é",
+      "t",
+      "f",
+      "a"
+    ]
+  },
+  {
+    "Sentence": "Je _ dans mon lit.",
+    "root": "dors",
+    "letters": [
+      "d",
+      "r",
+      "o",
+      "p",
+      "r",
+      "s",
+      "é",
+      "e",
+      "f",
+      "r"
+    ]
+  },
+  {
+    "Sentence": "Tu _ une pomme.",
+    "root": "manges",
+    "letters": [
+      "a",
+      "r",
+      "g",
+      "s",
+      "m",
+      "s",
+      "é",
+      "e",
+      "n",
+      "r"
+    ]
+  },
+  {
+    "Sentence": "Leonard et Penny se _ avec Sheldon.",
+    "root": "disputent",
+    "letters": [
+      "d",
+      "f",
+      "u",
+      "n",
+      "t",
+      "p",
+      "t",
+      "e",
+      "i",
+      "s"
+    ]
+  },
+  {
+    "Sentence": "Mona et Lisa _Êleur patron.",
+    "root": "aident",
+    "letters": [
+      "t",
+      "e",
+      "r",
+      "d",
+      "t",
+      "a",
+      "i",
+      "z",
+      "é",
+      "d"
+    ]
+  },
+  {
+    "Sentence": "Nous _ un jeu pour apprendre le français.",
+    "root": "faisons",
+    "letters": [
+      "p",
+      "r",
+      "f",
+      "s",
+      "i",
+      "m",
+      "s",
+      "o",
+      "a",
+      "n"
+    ]
+  },
+  {
+    "Sentence": "Ils _ une belle chanson.",
+    "root": "chantent",
+    "letters": [
+      "t",
+      "e",
+      "a",
+      "h",
+      "t",
+      "c",
+      "n",
+      "n",
+      "r",
+      "é"
+    ]
+  },
+  {
+    "Sentence": "J' _ des aliments.",
+    "root": "achète",
+    "letters": [
+      "è",
+      "a",
+      "t",
+      "s",
+      "e",
+      "c",
+      "é",
+      "n",
+      "h",
+      "o"
+    ]
+  }
+]

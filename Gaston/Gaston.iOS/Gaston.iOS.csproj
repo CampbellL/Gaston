@@ -148,4 +148,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\FillInTheBlank.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Content Include="Resources\MultipleChoice.json" />
+  </ItemGroup>
 </Project>

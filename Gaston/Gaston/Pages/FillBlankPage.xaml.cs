@@ -27,7 +27,7 @@ namespace Gaston.Pages
             BindingContext = _example;
             int i = 0;
             int j = 0;
-            foreach(Letter letter in _example.letterList)
+            foreach(Letter letter in _example.LetterList)
             {               
                 Button button = new Button
                 {
@@ -102,7 +102,7 @@ namespace Gaston.Pages
             }
             res = Reverse(res);
 
-            if (res.Equals(_example.getAnswer()))
+            if (res.Equals(_example.GetAnswer()))
             {
                 this.BackgroundColor = Color.LightSeaGreen;
                 _example.Sentence = _example.Sentence.Replace("_", "");

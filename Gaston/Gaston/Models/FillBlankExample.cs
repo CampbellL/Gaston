@@ -7,11 +7,13 @@ namespace Gaston.Models
 {
     public class FillBlankExample : Example
     {
-
-        public List<Letter> letterList = new List<Letter>();
+        public readonly List<Letter> LetterList = new List<Letter>();
+        private static int _score = 10;
+        public static int Score => _score;
 
         private string _sentence;
-        private string _answer;
+        private readonly string _answer;
+
         public string Sentence
         {
             set
@@ -19,44 +21,31 @@ namespace Gaston.Models
                 if (_sentence != value)
                 {
                     _sentence = value;
-                    OnPropertyChanged ("Sentence");
+                    OnPropertyChanged();
                 }
             }
             get { return _sentence; }
         }
 
-        public FillBlankExample(string sentence,string answer)
+        public FillBlankExample(string sentence, string answer, List<Letter> letters)
         {
-            fillLetterList();
+            FillLetterList(letters);
             Sentence = sentence;
             _answer = answer;
         }
 
-        public void fillLetterList()
+        private void FillLetterList(List<Letter> tempList)
         {
-            List<Letter> tempList = new List<Letter>();
             Random rand = new Random();
-            int random;
-            tempList.Add(new Letter("v"));
-            tempList.Add(new Letter("a"));
-            tempList.Add(new Letter("i"));
-            tempList.Add(new Letter("s"));
-            tempList.Add(new Letter("n"));
-            tempList.Add(new Letter("o"));
-            tempList.Add(new Letter("k"));
-            tempList.Add(new Letter("q"));
-            tempList.Add(new Letter("e"));
-            tempList.Add(new Letter("e"));
-
-            while(tempList.Count > 0)
+            while (tempList.Count > 0)
             {
-                random = rand.Next(tempList.Count-1);
-                letterList.Add(tempList[random]);
+                var random = rand.Next(tempList.Count - 1);
+                LetterList.Add(tempList[random]);
                 tempList.RemoveAt(random);
             }
         }
 
-        public string getAnswer()
+        public string GetAnswer()
         {
             return _answer;
         }
