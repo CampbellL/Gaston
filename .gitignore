@@ -4,3 +4,13 @@ Gaston/Gaston/Gaston.csproj
 Gaston/Gaston.Android/Gaston.Android.csproj~8da4284f4d827af92a24a98d52b650aaf0af1d9f
 Gaston/Gaston.iOS/Gaston.iOS.csproj
 Gaston/Gaston.Android/Gaston.Android.csproj
+Gaston/Gaston.iOS/Resources/wrongAnswer.mp3
+Gaston/Gaston.iOS/Resources/buttonUnpress.mp3
+Gaston/Gaston.Android/Resources/drawable/WorldButton.png
+Gaston/Gaston.iOS/Resources/buttonPress.mp3
+Gaston/Gaston.iOS/Resources/WorldButton.png
+Gaston/Gaston.Android/Assets/rightAnswer.mp3
+Gaston/Gaston.Android/Assets/buttonUnpress.mp3
+Gaston/Gaston.Android/Assets/buttonPress.mp3
+Gaston/Gaston.iOS/Resources/rightAnswer.mp3
+Gaston/Gaston.Android/Assets/wrongAnswer.mp3

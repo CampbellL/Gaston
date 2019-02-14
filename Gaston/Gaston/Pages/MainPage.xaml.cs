@@ -22,7 +22,8 @@ namespace Gaston.Pages
             //Navigation.PushModalAsync(new FingerPaintPage());
             Level  level = Level.GetLevelFromJson();
             Example.Shuffle(level.Examples);
-            Navigation.PushModalAsync(new LevelLoader(level));
+            //Navigation.PushModalAsync(new LevelLoader(level));
+            Navigation.PushModalAsync(new map1());
         }
 
         private void Settings_Clicked(object sender, EventArgs e)

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,13 +9,13 @@ using Xamarin.Forms.Xaml;
 
 namespace Gaston.Pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class map1 : ContentPage
-    {
-        public map1()
-        {
-            InitializeComponent();
-        }
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+	public partial class map2 : ContentPage
+	{
+		public map2 ()
+		{
+			InitializeComponent ();
+		}
 
         private void Level1_Clicked(object sender, EventArgs e)
         {
@@ -40,8 +40,7 @@ namespace Gaston.Pages
         private void SwipeGestureRecognizer_Swiped(object sender, SwipedEventArgs e)
         {
             Navigation.PopModalAsync();
-            Navigation.PushModalAsync(new map2());
-            
+            Navigation.PushModalAsync(new map1());
         }
     }
 }

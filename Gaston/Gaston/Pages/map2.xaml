@@ -1,10 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?>
-
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Gaston.Pages.map1">
+             x:Class="Gaston.Pages.map2">
     <ContentPage.Content>
-
         <Grid x:Name="MapGrid">
             <Grid.RowDefinitions>
                 <RowDefinition></RowDefinition>
@@ -27,24 +25,24 @@
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
 
-            <Button Grid.Row="5" Grid.Column="1" Text="1" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level1" Clicked="Level1_Clicked">
+            <Button Grid.Row="4" Grid.Column="1" Text="1" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level1" Clicked="Level1_Clicked">
 
             </Button>
 
-            <Button Grid.Row="2" Grid.Column="2" Text="2" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level2" Clicked="Level2_Clicked">
+            <Button Grid.Row="2" Grid.Column="6" Text="2" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level2" Clicked="Level2_Clicked">
 
             </Button>
 
-            <Button Grid.Row="3" Grid.Column="4" Text="3" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level3" Clicked="Level3_Clicked">
+            <Button Grid.Row="5" Grid.Column="4" Text="3" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level3" Clicked="Level3_Clicked">
 
             </Button>
 
-            <Button Grid.Row="6" Grid.Column="5" Text="4" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level4" Clicked="Level4_Clicked">
+            <Button Grid.Row="7" Grid.Column="5" Text="4" BackgroundColor="Red" CornerRadius="5" BorderWidth="2" BorderColor="Black" x:Name="Level4" Clicked="Level4_Clicked">
 
             </Button>
 
             <Grid.GestureRecognizers>
-                <SwipeGestureRecognizer Direction="Left" Swiped="SwipeGestureRecognizer_Swiped"></SwipeGestureRecognizer>
+                <SwipeGestureRecognizer Direction="Right" Swiped="SwipeGestureRecognizer_Swiped"></SwipeGestureRecognizer>
             </Grid.GestureRecognizers>
         </Grid>
     </ContentPage.Content>
