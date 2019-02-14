@@ -158,6 +158,9 @@
     <BundleResource Include="Resources\wrongAnswer.mp3">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </BundleResource>
+    <BundleResource Include="Resources\POL-water-drops-short.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </BundleResource>
     <EmbeddedResource Include="Resources\FillInTheBlank.json">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
