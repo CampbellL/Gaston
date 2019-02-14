@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Xml.Schema;
 using Gaston.Pages;
 using Newtonsoft.Json;
@@ -12,6 +14,7 @@ namespace Gaston.Models
     {
         public List<Example> Examples;
         public int LevelScore;
+
 
         public static Level GetLevelFromJson()
         {
@@ -36,18 +39,19 @@ namespace Gaston.Models
                         ));
                     }
                 }
+
             #endregion
 
             #region FillInTheBlankRegion
 
             stream = assembly.GetManifestResourceStream($"{assembly.GetName().Name}.FillInTheBlank.json");
-            
+
             if (stream != null)
                 using (var reader = new JsonTextReader(new StreamReader(stream)))
                 {
                     JsonSerializer serializer = new JsonSerializer();
                     JArray jArray = (JArray) serializer.Deserialize(reader);
-                   
+
                     foreach (var item in jArray)
                     {
                         var sentence = item["sentence"].Value<string>();
@@ -60,7 +64,6 @@ namespace Gaston.Models
                         ));
                     }
                 }
-
 
             #endregion
 
