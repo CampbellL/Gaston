@@ -29,6 +29,7 @@ namespace Gaston.Models
         
         public MultipleChoiceExample(Verb multipleChoiceVerb, string sentence)
         {
+            Score = 100;
             Sentence = sentence;             
             MultipleChoiceVerb = multipleChoiceVerb;
         }

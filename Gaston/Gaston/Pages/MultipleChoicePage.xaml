@@ -11,13 +11,13 @@
                 </Grid.RowDefinitions>
                 <Label FontSize="Large" Text="{Binding Sentence,Mode=TwoWay}" VerticalOptions="CenterAndExpand"></Label>
                 <Grid Grid.Row="1" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" x:Name="ButtonGrid">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
                 </Grid>
             </Grid>
         </StackLayout>

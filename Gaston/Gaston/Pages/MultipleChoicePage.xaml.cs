@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 using Gaston.Models;
 using Gaston.Models.States;
 using Xamarin.Forms;
@@ -13,6 +14,7 @@ namespace Gaston.Pages
 
         private readonly List<Button> _buttons = new List<Button>();
         private readonly MultipleChoiceExample _example;
+        public static int Score = 100;
 
         public MultipleChoicePage(MultipleChoiceExample example)
         {
@@ -36,9 +38,9 @@ namespace Gaston.Pages
                     BorderColor = Color.Black,
                     BorderWidth = 2,
                     CornerRadius = 5,
-                    Padding = 5
+                    Padding = 50
                 };
-                Grid.SetColumn(button, i);
+                Grid.SetRow(button, i);
                 button.Clicked += OnButtonClicked;
                 ButtonGrid.Children.Add(button);
                 _buttons.Add(button);
@@ -60,7 +62,7 @@ namespace Gaston.Pages
             {
                 Navigation.PopModalAsync(true);
                 this.ExampleState.Completed = true;
-                this.ExampleState.Score = 100;
+                this.ExampleState.Score = 0;
                 return false;
             });
         }

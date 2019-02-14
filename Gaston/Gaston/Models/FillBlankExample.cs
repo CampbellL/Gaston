@@ -8,11 +8,9 @@ namespace Gaston.Models
     public class FillBlankExample : Example
     {
         public readonly List<Letter> LetterList = new List<Letter>();
-        private static int _score = 10;
-        public static int Score => _score;
-
         private string _sentence;
         private readonly string _answer;
+        private readonly ScoreTracker _scoreTracker;
 
         public string Sentence
         {
@@ -29,11 +27,18 @@ namespace Gaston.Models
 
         public FillBlankExample(string sentence, string answer, List<Letter> letters)
         {
+            _scoreTracker = new ScoreTracker(15,300,75,1);
+            Score = 300;
             FillLetterList(letters);
             Sentence = sentence;
             _answer = answer;
         }
 
+
+        public int GetExampleScore()
+        {
+            return _scoreTracker.GetScore();
+        }
         private void FillLetterList(List<Letter> tempList)
         {
             Random rand = new Random();

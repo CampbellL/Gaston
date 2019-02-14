@@ -14,11 +14,12 @@ namespace Gaston.Pages
 	public partial class FillBlankPage : GamePage
 	{
         private readonly FillBlankExample _example;
-        private Stack<Letter> letterStack = new Stack<Letter>();
-        private List<Button> buttonList = new List<Button>();
-        private Letter last;
-        private int score = 100;
+        private readonly Stack<Letter> _letterStack = new Stack<Letter>();
+        private readonly List<Button> _buttonList = new List<Button>();
+        private Letter _last;
+        private int _score = 100;
         
+
         public FillBlankPage (FillBlankExample example)
 		{
             ExampleState = new ExampleState();
@@ -44,41 +45,37 @@ namespace Gaston.Pages
                     j++;
                     i = 0;
                 }
-                buttonList.Add(button);
+                _buttonList.Add(button);
             }
             
 		}
 
         async void OnClicked(object sender,EventArgs args)
         {
-            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
-            player.Volume = (Application.Current.Properties["SfxVolume"] is double ? (double)(double)Application.Current.Properties["SfxVolume"] : 0) / 100;
             Button button = (Button) sender;
             if(button.BackgroundColor == Color.White)
             {
-                player.Load("ButtonPress.mp3");
-                player.Play();
                 if (_example.Sentence.Contains("_"))
                 {
                     _example.Sentence = _example.Sentence.Insert(_example.Sentence.IndexOf("_", StringComparison.Ordinal), button.Text);
                 }
-                last = new Letter(button.Text);
-                letterStack.Push(last);
+                _last = new Letter(button.Text);
+                _letterStack.Push(_last);
                 button.BackgroundColor = Color.Blue;
             }
             else if(button.BackgroundColor == Color.Blue)
             {
-                if(button.Text.ToUpper().Equals(letterStack.Peek().getCharacter().ToUpper()))
+                if(button.Text.ToUpper().Equals(_letterStack.Peek().getCharacter().ToUpper()))
                 {
                     _example.Sentence = _example.Sentence.Remove(_example.Sentence.IndexOf("_", StringComparison.Ordinal)-1,1);
-                    Console.WriteLine(letterStack.Pop().getCharacter());
+                    _letterStack.Pop();
                     button.BackgroundColor = Color.White;
                 }
                 else
                 {
-                    Letter shaker = letterStack.Peek();
+                    Letter shaker = _letterStack.Peek();
                     uint timeout = 50;
-                    foreach(Button bShake in buttonList)
+                    foreach(Button bShake in _buttonList)
                     {
                         if (bShake.Text.Equals(shaker.getCharacter()) && bShake.BackgroundColor == Color.Blue)
                         {
@@ -100,7 +97,7 @@ namespace Gaston.Pages
         private void Button_Clicked(object sender, EventArgs e)
         {
             string res = "";            
-            foreach(Letter letter in letterStack)
+            foreach(Letter letter in _letterStack)
             {
                 res += letter.getCharacter();
             }
@@ -110,18 +107,33 @@ namespace Gaston.Pages
             {
                 this.BackgroundColor = Color.LightSeaGreen;
                 _example.Sentence = _example.Sentence.Replace("_", "");
-                foreach (Button button in buttonList)
+                foreach (Button button in _buttonList)
                 {
                     button.IsEnabled = false;
-                }               
+                }
+                Label label = new Label {
+                    Text = _score.ToString()
+                };
+
+                parentStack.Children.Add(label);
+                Device.StartTimer(TimeSpan.FromSeconds(0.5), () =>
+                {
+                    label.IsVisible = false;
+                    return false;
+                });
+                
                 Navigation.PopModalAsync(true);
-                ExampleState.Score = score;      
-                ExampleState.Completed = true;              
+                ExampleState.Score = _example.GetExampleScore();      
+                ExampleState.Completed = true;
+
+                
+
+
             }
             else
             {
                 this.BackgroundColor = Color.MediumVioletRed;
-                score -= 20;
+                _score -= 20;
                 Device.StartTimer(TimeSpan.FromSeconds(1.5), () => {
                     this.BackgroundColor = Color.White;
                     return false;
@@ -129,7 +141,18 @@ namespace Gaston.Pages
                 
             }
         }
-
+        
+        private void Skip_Clicked(object sender, EventArgs e)
+        {
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Volume = (Application.Current.Properties["SfxVolume"] is double ? (double)(double)Application.Current.Properties["SfxVolume"] : 0) / 100;
+            player.Load("wrongAnswer.mp3");
+            player.Play();
+            ExampleState.Score = 0;
+            Navigation.PopModalAsync(true);
+            ExampleState.Completed = true;
+        }
+        
         public string Reverse(string str)
         {
             char[] chars = str.ToCharArray();
@@ -140,12 +163,6 @@ namespace Gaston.Pages
                 chars[j] = c;
             }
             return new string(chars);
-        }
-
-        private void Skip_Clicked(object sender, EventArgs e)
-        {
-            ExampleState.Score = 0;
-            ExampleState.Completed = true;
         }
     }
 }

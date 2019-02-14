@@ -14,8 +14,13 @@ namespace Gaston.Pages
     public partial class LevelLoader : ContentPage
     {
         private GamePage _currentPage;
-        private Level _level;
+        private readonly Level _level;
         private int _exampleCount = 0;
+        private const int LevelCap = 1000;
+        private int _playerScore = 0;
+        private int _tracker = 0;
+        private Example _currentExample;
+
         public LevelLoader(Level level)
         {
             _level = level;
@@ -25,25 +30,39 @@ namespace Gaston.Pages
 
         private void CreatePageInstance()
         {
-            
-            Example currentExample = _level.Examples.ElementAt(_exampleCount);
-            if (currentExample.GetType() == typeof(MultipleChoiceExample))
+            _currentExample = _level.Examples.ElementAt(_exampleCount);
+            if (_currentExample.Score >= (LevelCap - _tracker))
             {
-                _currentPage = new MultipleChoicePage((MultipleChoiceExample) currentExample);
+                _currentExample = _level.Examples.First(l => l.Score <= (LevelCap - _tracker));
             }
-            else if (currentExample.GetType() == typeof(FillBlankExample))
+
+            _tracker += _currentExample.Score;
+
+            if (_currentExample.GetType() == typeof(MultipleChoiceExample))
             {
-                _currentPage = new FillBlankPage((FillBlankExample) currentExample);
-            }            
+                _currentPage = new MultipleChoicePage((MultipleChoiceExample) _currentExample);
+            }
+            else if (_currentExample.GetType() == typeof(FillBlankExample))
+            {
+                _currentPage = new FillBlankPage((FillBlankExample) _currentExample);
+            }
+            
             _currentPage.ExampleState.ExampleCompleted += OnLevelCompleted;
             
             Navigation.PushModalAsync(_currentPage);
+            _level.Examples.Remove(_currentExample);
             _exampleCount++;
         }
 
         private void OnLevelCompleted(object source, EventArgs args)
         {
-            CreatePageInstance();
+            _playerScore += _currentPage.ExampleState.Score;
+            if (_tracker < 1000)
+                CreatePageInstance();
+            else
+            {
+                DisplayAlert("You won", "Congratulation with a score of : " + _playerScore,"yay");
+            }
         }
     }
 }
