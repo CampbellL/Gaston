@@ -22,8 +22,15 @@
                 </Grid.RowDefinitions>
             </Grid>
             <Grid>
-                <Button x:Name="Commit" Clicked="Button_Clicked" Text="Commit">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" x:Name="Commit" Clicked="Button_Clicked" Text="Commit">
 
+                </Button>
+                <Button Grid.Column="1" x:Name="Skip" Clicked="Skip_Clicked" Text="Skip">
+                    
                 </Button>
             </Grid>
         </StackLayout>

@@ -18,7 +18,7 @@ namespace Gaston.Pages
         private List<Button> buttonList = new List<Button>();
         private Letter last;
         private int score = 100;
-
+        
         public FillBlankPage (FillBlankExample example)
 		{
             ExampleState = new ExampleState();
@@ -51,9 +51,13 @@ namespace Gaston.Pages
 
         async void OnClicked(object sender,EventArgs args)
         {
+            var player = Plugin.SimpleAudioPlayer.CrossSimpleAudioPlayer.Current;
+            player.Volume = (Application.Current.Properties["SfxVolume"] is double ? (double)(double)Application.Current.Properties["SfxVolume"] : 0) / 100;
             Button button = (Button) sender;
             if(button.BackgroundColor == Color.White)
             {
+                player.Load("ButtonPress.mp3");
+                player.Play();
                 if (_example.Sentence.Contains("_"))
                 {
                     _example.Sentence = _example.Sentence.Insert(_example.Sentence.IndexOf("_", StringComparison.Ordinal), button.Text);
@@ -109,25 +113,10 @@ namespace Gaston.Pages
                 foreach (Button button in buttonList)
                 {
                     button.IsEnabled = false;
-                }
-                Label label = new Label {
-                    Text = score.ToString()
-                };
-
-                parentStack.Children.Add(label);
-                Device.StartTimer(TimeSpan.FromSeconds(0.5), () =>
-                {
-                    label.IsVisible = false;
-                    return false;
-                });
-                
+                }               
                 Navigation.PopModalAsync(true);
                 ExampleState.Score = score;      
-                ExampleState.Completed = true;
-
-                
-
-
+                ExampleState.Completed = true;              
             }
             else
             {
@@ -151,6 +140,12 @@ namespace Gaston.Pages
                 chars[j] = c;
             }
             return new string(chars);
+        }
+
+        private void Skip_Clicked(object sender, EventArgs e)
+        {
+            ExampleState.Score = 0;
+            ExampleState.Completed = true;
         }
     }
 }
