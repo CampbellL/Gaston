@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
+using System.Reflection;
 using Gaston.Models;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
 
 namespace Gaston.Pages
@@ -16,21 +18,7 @@ namespace Gaston.Pages
 
         private void Play_Clicked(object sender, EventArgs e)
         {
-            Verb verb = new Verb("aim",
-                new Dictionary<string, bool>
-                {
-                    {
-                        "e",true
-                    },
-                    {
-                        "es",true
-                    },
-                    {
-                        "ons",true
-                    },
-                }
-                );
-            Navigation.PushModalAsync(new FingerPaintPage());
+            Navigation.PushModalAsync(new LevelLoader(Level.GetLevelFromJson()));
         }
 
         private void Settings_Clicked(object sender, EventArgs e)

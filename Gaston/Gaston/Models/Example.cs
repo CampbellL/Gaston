@@ -5,8 +5,10 @@ using Gaston.Annotations;
 
 namespace Gaston.Models
 {
-    public class Example :  INotifyPropertyChanged
+    public abstract class Example :  INotifyPropertyChanged
     {
+        public int Score;
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         [NotifyPropertyChangedInvocator]

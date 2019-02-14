@@ -5,9 +5,7 @@
              x:Class="Gaston.Pages.LevelLoader">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Hello, world!"
-                   VerticalOptions="CenterAndExpand"
-                   HorizontalOptions="CenterAndExpand" />
+            <Label Text="+100 Point gained" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

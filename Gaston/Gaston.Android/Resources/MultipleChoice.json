@@ -1,0 +1,269 @@
+[
+	{
+		"sentence" : "Jean march_ chez le boulanger.",
+		"answers" : [
+			{
+				"e" : true,
+			},
+
+			{
+				"a" : false,
+			},
+
+			{
+				"i" : false,
+			},
+
+			{
+				"as" : false,
+			},
+		]
+	},
+
+	{
+		"sentence" : "Marie aim_ courir dehors.",
+		"answers" : [
+			{
+				"ee" : true
+			},
+
+			{
+				"a" : false
+			},
+
+			{
+				"i" : false
+			},
+
+			{
+				"e" : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Philip _ trés petit.",
+		"answers" : [
+			{
+				"es" : false
+			},
+
+			{
+				"est" : true
+			},
+
+			{
+				"sont" : false
+			},
+
+			{
+				"êtes" : false
+			},
+
+			{
+				"suis" : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Anna nag_ dans le lac.",
+		"answers" : [
+			{
+				"e" : true
+			},
+
+			{
+				"i" : false
+			},
+
+			{
+				"a" : false
+			},
+
+			{
+				"es" : false
+			},
+
+			{
+				" " : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Marco mang_ du riz chaque soir.",
+		"answers" : [
+			{
+				"a" : false
+			},
+
+			{
+				" " : false
+			},
+
+			{
+				"es" : false
+			},
+
+			{
+				"e" : true
+			},
+
+			{
+				"t" : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Je _ le nom de ton père.",
+		"answers" : [
+			{
+				"sais" : true
+			},
+
+			{
+				"saise" : false
+			},
+
+			{
+				"save" : false
+			},
+
+			{
+				"saves" : true
+			},
+
+			{
+				"sache" : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Nous aimon_ notre mères.",
+		"answers" : [
+			{
+				"t" : false
+			},
+
+			{
+				" " : false
+			},
+
+			{
+				"s" : true
+			},
+
+			{
+				"i" : false
+			},
+
+			{
+				"z" : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Vous cour_ pour faire du fitness.",
+		"answers" : [
+			{
+				"ez" : true
+			},
+
+			{
+				"iez" : false
+			},
+
+			{
+				"e" : false
+			},
+
+			{
+				"s" : false
+			},
+
+			{
+				" " : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Nous jou_ sur un terrain de jeux.",
+		"answers" : [
+			{
+				"est" : false
+			},
+
+			{
+				"ions" : false
+			},
+
+			{
+				"ez" : false
+			},
+
+			{
+				"ons" : true
+			},
+
+			{
+				"ent" : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Melissa répond_ aux questions des enfants.",
+		"answers" : [
+			{
+				" " : true
+			},
+
+			{
+				"s" : false
+			},
+
+			{
+				"e" : false
+			},
+
+			{
+				"est" : false
+			},
+
+			{
+				"u" : false
+			},
+		]
+	},
+
+	{
+		"sentence" : "Ma tante _ des aliments.",
+		"answers" : [
+			{
+				"achèté" : false
+			},
+
+			{
+				"achéte" : false
+			},
+
+			{
+				"achete" : false
+			},
+
+			{
+				"achète" : true
+			},
+
+			{
+				"acheté" : false
+			},
+		]
+	},
+
+]
