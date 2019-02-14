@@ -24,6 +24,9 @@ namespace Gaston.Models
             }
             get => _sentence;
         }
+        
+        
+        
         public MultipleChoiceExample(Verb multipleChoiceVerb, string sentence)
         {
             Sentence = sentence;             

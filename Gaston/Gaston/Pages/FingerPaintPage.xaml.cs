@@ -55,7 +55,7 @@ namespace Gaston.Pages
                 'i','o', 'e','n',
                 'd','e','r','t');
             List<string>  a = new List<string>();
-            a.Add("dormens");
+            a.Add("dorment");
             a.Add("mange");
             a.Add("montre");
             a.Add("dit");

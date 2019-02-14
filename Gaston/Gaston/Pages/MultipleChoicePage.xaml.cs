@@ -18,6 +18,10 @@ namespace Gaston.Pages
         {
             ExampleState = new ExampleState();
             
+            Random rand = new Random();
+            example.MultipleChoiceVerb.Endings = example.MultipleChoiceVerb.Endings.OrderBy(x => rand.Next())
+                .ToDictionary(item => item.Key, item => item.Value);
+            
             InitializeComponent();
             
             _example = example;

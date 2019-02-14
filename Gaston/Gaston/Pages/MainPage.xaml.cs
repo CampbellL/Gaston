@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using Gaston.Models;
+using Gaston.Models.States;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Xamarin.Forms;
@@ -18,7 +19,10 @@ namespace Gaston.Pages
 
         private void Play_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new LevelLoader(Level.GetLevelFromJson()));
+            //Navigation.PushModalAsync(new FingerPaintPage());
+            Level  level = Level.GetLevelFromJson();
+            Example.Shuffle(level.Examples);
+            Navigation.PushModalAsync(new LevelLoader(level));
         }
 
         private void Settings_Clicked(object sender, EventArgs e)

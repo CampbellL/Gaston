@@ -1,7 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.Reflection;
-using Gaston.Pages;
+﻿using Gaston.Pages;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -24,7 +21,7 @@ namespace Gaston
 
         protected override void OnStart()
         {
-            // Handle when your app starts
+            
         }
 
         protected override void OnSleep()

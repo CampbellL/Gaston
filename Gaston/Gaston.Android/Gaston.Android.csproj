@@ -108,6 +108,9 @@
   <ItemGroup>
     <Content Include="Resources\FillInTheBlank.json" />
     <Content Include="Resources\MultipleChoice.json" />
+    <AndroidResource Include="Resources\POL-water-drops-short.wav">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
